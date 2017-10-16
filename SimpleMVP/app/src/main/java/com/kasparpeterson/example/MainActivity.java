@@ -1,29 +1,28 @@
 package com.kasparpeterson.example;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Toast;
 
+import com.kasparpeterson.example.databinding.ActivityMainBinding;
 import com.kasparpeterson.simplemvp.MVPBaseActivity;
 
 public class MainActivity extends MVPBaseActivity<MainContract.PresenterViewOperations, MainContract.ViewOperations>
         implements MainContract.ViewOperations {
 
-    private EditText firstNameEditText;
-    private EditText lastNameEditText;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        firstNameEditText = (EditText) findViewById(R.id.first_name_edit_text);
-        lastNameEditText = (EditText) findViewById(R.id.last_name_edit_text);
-        findViewById(R.id.continue_button).setOnClickListener(new View.OnClickListener() {
+        final String firstName = mBinding.firstNameEditText.getText().toString();
+        final String lastName = mBinding.lastNameEditText.getText().toString();
+
+        mBinding.continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                getPresenter().onContinue(firstNameEditText.getText().toString(),
-                        lastNameEditText.getText().toString());
+            public void onClick(View v) {
+                getPresenter().onContinue(firstName, lastName);
             }
         });
     }
@@ -40,16 +39,20 @@ public class MainActivity extends MVPBaseActivity<MainContract.PresenterViewOper
 
     @Override
     public void showFirstNameError() {
-        // TODO:
+        showToast(getString(R.string.show_first_name_error));
     }
 
     @Override
     public void showLastNameError() {
-        // TODO:
+        showToast(getString(R.string.show_last_name_error));
     }
 
     @Override
     public void showSuccess() {
-        // TODO:
+        showToast(getString(R.string.show_success));
+    }
+
+    public void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

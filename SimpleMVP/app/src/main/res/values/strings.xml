@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">SimpleMVP</string>
+    <string name="continue_">Continue</string>
+    <string name="description">This is a sample flow for this MVP usage. Please enter your first name and last name in the fields below.</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="show_first_name_error">First name is empty or character &lt; 2 </string>
+    <string name="show_last_name_error">Last name is empty or character &lt; 2 </string>
+    <string name="show_success">Success</string>
 </resources>

@@ -5,7 +5,7 @@ import com.kasparpeterson.simplemvp.MVPBaseView;
 
 /**
  * Created by kaspar on 02/12/2016.
- */
+ **/
 interface MainContract {
 
     // Presenter -> View

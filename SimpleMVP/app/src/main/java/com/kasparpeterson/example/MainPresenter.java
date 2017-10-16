@@ -2,7 +2,7 @@ package com.kasparpeterson.example;
 
 /**
  * Created by kaspar on 02/12/2016.
- */
+ **/
 
 public class MainPresenter extends MainContract.PresenterViewOperations {
 
